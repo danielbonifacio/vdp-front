@@ -1,7 +1,7 @@
 <template>
   <div class="logos-group">
     <div
-      v-for="i in multiplicator"
+      v-for="i in multiplier"
       :key="i"
       class="logo"
       :style="`background-color: ${getColor(i) || '#FFFFFF'}`"
@@ -13,10 +13,11 @@
 
 <script>
 import { isTablet, isMobile } from '../../utils/responsivity'
+
 export default {
   data () {
     return {
-      rows: 4,
+      rows: (isMobile() || isTablet()) ? 3 : 4,
       latestSum: 0,
       colorIndex: 0,
       iterator: 0,
@@ -26,7 +27,7 @@ export default {
   },
 
   computed: {
-    multiplicator () {
+    multiplier () {
       return this.rows * this.rows
     }
   },
@@ -50,7 +51,7 @@ export default {
         1: this.colorPalette[0]
       }
 
-      for (let i = 1; i <= this.multiplicator; i++) {
+      for (let i = 1; i <= this.multiplier; i++) {
         if (gapCounter === this.rows + 1) {
           gapCounter = 0
           colors[i] = this.colorPalette[colorIndex]
@@ -67,7 +68,7 @@ export default {
     },
 
     fixRows () {
-      this.rows = (isTablet() || isMobile()) <= 768 ? 3 : 4
+      this.rows = (isTablet() || isMobile()) ? 3 : 4
     }
   }
 }

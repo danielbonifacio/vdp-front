@@ -84,6 +84,7 @@ export default {
             vue.$data.hasPrevious = !!this.activeIndex
             vue.$data.hasNext = this.activeIndex < vue.products.length - this.params.slidesPerView
             vue.$forceUpdate()
+            vue.fetchMoreData(this.activeIndex, this.params.slidesPerView)
           }
         }
       }
@@ -100,6 +101,8 @@ export default {
     window.addEventListener('resize', () => {
       this.isMobile = isMobile()
       this.$forceUpdate()
+
+      // maintain responsivity during window resize
       this.forceRerender()
     })
   },
@@ -113,6 +116,12 @@ export default {
         // Add the component back in
         this.renderComponent = true
       })
+    },
+
+    fetchMoreData (currentIndex, viewLimit) {
+      if (currentIndex + viewLimit >= this.products.length - 2) {
+        this.$store.dispatch('Products.store/fetch')
+      }
     }
   }
 }

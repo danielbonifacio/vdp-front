@@ -1,8 +1,13 @@
 # front
 
-> My majestic Nuxt.js project
+Criar um arquivo `.env`
 
-## Build Setup
+``` env
+BASE_URL=http://localhost:3000
+API_URI=http://localhost:3333
+```
+
+Executar os comandos:
 
 ``` bash
 # install dependencies
@@ -10,13 +15,4 @@ $ yarn install
 
 # serve with hot reload at localhost:3000
 $ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
 ```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).

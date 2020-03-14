@@ -1,18 +1,18 @@
 <template>
   <section id="most-viewed">
     <Container>
-      <h2>
+      <Heading level="2">
         Produtos mais acessados
-      </h2>
+      </Heading>
     </Container>
     <Container v-if="renderComponent" class="product-container">
       <div v-swiper:mySwiper="swiperOption">
         <div class="swiper-wrapper">
-          <div v-for="product in banners" :key="product.diff" class="swiper-slide">
+          <div v-for="product in products" :key="product.diff" class="swiper-slide">
             <ProductCard
               :title="product.title"
               :image="product.image"
-              :diff="product.diff"
+              :diff="product.percentage"
               :price="product.price"
             />
           </div>
@@ -45,60 +45,17 @@ export default {
   components: {
     ProductCard
   },
+
   data () {
     const vue = this
     return {
       renderComponent: true,
       isMobile: isMobile(),
-      banners: [
-        {
-          title: 'Microsoft Xbox One S 1Tb Hdr 4k',
-          image: 'https://www.infostore.com.br/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/x/b/xbox_one_2_controles_01.jpg',
-          diff: -17,
-          price: 2100
-        },
-        {
-          title: 'Microsoft Xbox One S 1Tb Hdr 4k',
-          image: 'https://www.infostore.com.br/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/x/b/xbox_one_2_controles_01.jpg',
-          diff: -3,
-          price: 2100
-        },
-        {
-          title: 'Microsoft Xbox One S 1Tb Hdr 4k',
-          image: 'https://www.infostore.com.br/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/x/b/xbox_one_2_controles_01.jpg',
-          diff: 0,
-          price: 2100
-        },
-        {
-          title: 'Microsoft Xbox One S 1Tb Hdr 4k',
-          image: 'https://www.infostore.com.br/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/x/b/xbox_one_2_controles_01.jpg',
-          diff: 1,
-          price: 2100
-        },
-        {
-          title: 'Microsoft Xbox One S 1Tb Hdr 4k',
-          image: 'https://www.infostore.com.br/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/x/b/xbox_one_2_controles_01.jpg',
-          diff: 6,
-          price: 2100
-        },
-        {
-          title: 'Microsoft Xbox One S 1Tb Hdr 4k',
-          image: 'https://www.infostore.com.br/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/x/b/xbox_one_2_controles_01.jpg',
-          diff: 16,
-          price: 2100
-        },
-        {
-          title: 'Microsoft Xbox One S 1Tb Hdr 4k',
-          image: 'https://www.infostore.com.br/media/catalog/product/cache/e4d64343b1bc593f1c5348fe05efa4a6/x/b/xbox_one_2_controles_01.jpg',
-          diff: 7,
-          price: 2100
-        }
-      ],
       hasPrevious: false,
       hasNext: true,
       swiperOption: {
         breakpoints: {
-          1376: {
+          1366: {
             slidesPerView: 4,
             centeredSlides: false
           },
@@ -125,11 +82,17 @@ export default {
         on: {
           slideChange (e) {
             vue.$data.hasPrevious = !!this.activeIndex
-            vue.$data.hasNext = this.activeIndex < vue.$data.banners.length - vue.$data.swiperOption.slidesPerView
+            vue.$data.hasNext = this.activeIndex < vue.products.length - this.params.slidesPerView
             vue.$forceUpdate()
           }
         }
       }
+    }
+  },
+
+  computed: {
+    products () {
+      return this.$store.state['Products.store'].list
     }
   },
 
@@ -240,7 +203,10 @@ export default {
   h2 {
     font-size: 1.9em;
     font-weight: 600;
-    color: #454344;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.3em;
+    }
   }
 
   .swiper-wrapper {

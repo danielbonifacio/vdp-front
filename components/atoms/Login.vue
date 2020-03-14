@@ -51,7 +51,7 @@ nav {
       }
     }
 
-    // hide login on mobile
+    // hide login on tablet
     @media screen and (max-width: 768px) {
       li {
         position: absolute;

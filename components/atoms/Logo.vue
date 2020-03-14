@@ -1,10 +1,10 @@
 <template>
-  <h1>
+  <Heading level="1">
     <img
       src="~/assets/logo.png"
       alt="Logo"
     >
-  </h1>
+  </Heading>
 </template>
 
 <style lang="scss" scoped>

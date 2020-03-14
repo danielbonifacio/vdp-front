@@ -40,6 +40,10 @@ export default {
     FeaturedCompanies,
     Carousel,
     Footer
+  },
+
+  async fetch ({ store }) {
+    await store.dispatch('Products.store/fetch')
   }
 }
 </script>

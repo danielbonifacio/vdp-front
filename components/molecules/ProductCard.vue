@@ -81,6 +81,8 @@ export default {
         return '#00C853'
       }
 
+      // this color will neve be reached.
+      // see readme for more details
       if (diff <= 10) {
         return '#1B5E20'
       }
@@ -105,7 +107,7 @@ export default {
 
   &:hover,
   &:focus {
-    box-shadow: 0 5px 10px rgba(74,74,74, .15);
+    box-shadow: 0 5px 10px $shadow;
     transform: translateY(-3px);
   }
 

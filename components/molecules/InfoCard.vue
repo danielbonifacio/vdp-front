@@ -50,7 +50,7 @@ export default {
 .card {
   border-radius: 10px;
   background-color: #FFFFFF;
-  box-shadow: 0 5px 10px rgba(0,0,0,.3);
+  box-shadow: 0 5px 10px $shadow;
 
   min-height: 350px;
   padding: 40px 50px;

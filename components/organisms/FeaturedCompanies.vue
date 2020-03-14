@@ -44,7 +44,6 @@ export default {
 <style lang="scss" scoped>
 #featured-companies {
   padding: 0 0 100px;
-  color: #454344;
 
   @media screen and (max-width: 1110px) {
     padding: 0 0 48px;
@@ -71,14 +70,6 @@ export default {
 
     @media screen and (max-width: 1110px){
       flex-direction: column-reverse;
-
-      .text {
-        padding: 0 8px 0 0;
-      }
-
-      .logos {
-        padding: 0 0 0 8px;
-      }
     }
 
     .text {
@@ -90,6 +81,7 @@ export default {
       @media screen and (max-width: 1110px){
         margin-top: 24px;
         text-align: center;
+        padding: 0 8px 0 0;
       }
 
       .company {
@@ -133,6 +125,10 @@ export default {
 
     .logos {
       flex: 1;
+
+      @media screen and (max-width: 1110px){
+        padding: 0 0 0 8px;
+      }
     }
   }
 }

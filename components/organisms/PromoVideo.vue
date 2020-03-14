@@ -28,8 +28,11 @@ export default {
 
 <style lang="scss" socoped>
 #promo-video {
-  padding: 100px 0;
-  color: #454344;
+  padding: 100px;
+
+  @media screen and (max-width: 768px) {
+    padding: 24px 0;
+  }
 
   .container {
     display: flex;
@@ -39,8 +42,13 @@ export default {
 
   h3 {
     font-size: 2.5em;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
     text-align: center;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1.2em;
+      margin-bottom: 16px;
+    }
   }
 
   p {
@@ -49,6 +57,12 @@ export default {
     font-size: 1.3em;
     line-height: 1.6em;
     margin-bottom: 40px;
+
+    @media screen and (max-width: 768px) {
+      font-size: 1em;
+      line-height: 1.4em;
+      margin-bottom: 16px;
+    }
   }
 
   .embed {
@@ -56,23 +70,5 @@ export default {
     max-width: 1000px;
   }
 
-  @media screen and (max-width: 768px) {
-    padding: 24px 0;
-
-    h3 {
-      font-size: 1.2em;
-      margin-bottom: 16px;
-    }
-
-    p {
-      font-size: 1em;
-      line-height: 1.4em;
-      margin-bottom: 16px;
-    }
-
-    .embed {
-      width: 100%;
-    }
-  }
 }
 </style>

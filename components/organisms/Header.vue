@@ -24,6 +24,10 @@ export default {
 #heading {
   min-height: 200px;
 
+  @media screen and (max-width: 768px) {
+    min-height: 0;
+  }
+
   .effect {
     position: absolute;
     top: 0;
@@ -33,10 +37,6 @@ export default {
     @media screen and (max-width: 480px) {
       right: -250px;
     }
-  }
-
-  @media screen and (max-width: 768px) {
-    min-height: 0;
   }
 
   .container {

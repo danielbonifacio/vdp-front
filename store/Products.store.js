@@ -10,7 +10,7 @@ export const state = () => ({
 })
 
 export const mutations = {
-  set (state, payload) {
+  list (state, payload) {
     state.list = payload
   },
 
@@ -38,7 +38,7 @@ export const actions = {
         const { data } = await axios.get(`${API_URI}/products?limit=${limit}&offset=${offset}`)
 
         if (data.length) {
-          context.commit('set', [...list, ...data])
+          context.commit('list', [...list, ...data])
           context.commit('offset', limit)
         } else {
           context.commit('hasMore', false)

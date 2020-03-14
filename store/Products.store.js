@@ -17,7 +17,9 @@ export const actions = {
       const { data } = await axios.get(`${API_URI}/products`)
       context.commit('set', data)
     } catch (err) {
-      window.alert(err.message)
+      if (process.client) {
+        window.alert(err.message)
+      }
     }
   }
 }

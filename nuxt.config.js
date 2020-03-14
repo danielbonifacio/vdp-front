@@ -1,6 +1,9 @@
 
 export default {
   mode: 'universal',
+  env: {
+    API_URI: process.env.API_URI
+  },
   /*
   ** Headers of the page
   */
